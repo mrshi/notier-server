@@ -1,0 +1,21 @@
+{
+  "name": "notier-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "handlebars": "^4.0.11",
+    "koa-body": "^2.5.0",
+    "koa-next": "^1.0.4",
+    "md5": "^2.2.1",
+    "moment": "^2.19.1",
+    "mongoose": "^4.12.4",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
+  }
+}
