@@ -1,14 +1,12 @@
-const Notice = require('./../model/Notice.js');
-const Ticket = require('./../model/Ticket.js');
-const User = require('./../model/User.js');
-const moment = require('moment');
-moment.locale('zh-cn')
-const sendWXMessage = require('./../lib/sendWXMessage.js');
-const sendSMS = require('./../lib/sendSMS.js');
-
-const tplId = 'ZUxbqNKaCyPdZESZGEIkC2Da0PeJIYJEb3c-L8sCsyQ';
-
 async function noticer() {
+  const Notice = require('./../model/Notice.js');
+  const Ticket = require('./../model/Ticket.js');
+  const User = require('./../model/User.js');
+  const moment = require('moment');
+  moment.locale('zh-cn')
+  const sendWXMessage = require('./../lib/sendWXMessage.js');
+  const tplId = 'ZUxbqNKaCyPdZESZGEIkC2Da0PeJIYJEb3c-L8sCsyQ';
+  const sendSMS = require('./../lib/sendSMS.js');
   let now = Date.now();
   let notices = await Notice.find({
     time: {
