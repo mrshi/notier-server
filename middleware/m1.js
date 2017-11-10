@@ -1,5 +1,5 @@
 'use strict';
-const bypass = ['/getOpenid', '/', '/favicon.ico'];
+const bypass = ['/getOpenid', '/', '/favicon.ico', '/robots.txt'];
 const User = require('./../model/User.js');
 
 module.exports = async function m1 (ctx, next) {
