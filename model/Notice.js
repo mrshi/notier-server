@@ -7,7 +7,8 @@ var noticeSchema = mongoose.Schema({
   },
   ticketId: {
     type: String,
-    default: ''
+    default: '',
+    index: true
   },
   // 提醒类型 1,微信；2短信..
   type: {

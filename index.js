@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 let app = koa({
-  watch: true,
+  watch: false,
   base: __dirname,
   path: {
     middleware: path.join(__dirname, 'middleware'),

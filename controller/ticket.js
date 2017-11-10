@@ -1,6 +1,7 @@
 const koaBody = require('koa-body');
 const User = require('./../model/User.js');
 const Ticket = require('./../model/Ticket.js');
+const Notice = require('./../model/Notice.js');
 const mongoose = require('mongoose');
 const createNotice = require('./../lib/createNotice.js')
 const formatTime = require('./../lib/formatTime.js')
@@ -107,6 +108,7 @@ module.exports = [
         }
         ticket.isDelete = true;
         await ticket.save();
+        await Notice.remove({ticketId: id});
         ctx.hbsResponse.json({status: 'ok'})
       } catch (e) {
         ctx.hbsResponse.json({status: 'delete ticket error'})
@@ -130,7 +132,11 @@ module.exports = [
            !ticket.noti_to.indexOf(ctx.user)) {
               throw Error('auth error')
         }
-        Object.assign(ticket, ctx.request.body)
+        Object.assign(ticket, ctx.request.body);
+        // 目前仅支持已完成删除，不支持恢复后添加
+        if (ticket.isFinish == true || ticket.isDelete == true) {
+          await Notice.remove({ticketId: id})
+        }
         await ticket.save();
         ctx.hbsResponse.json({ status: 'ok'})
       } catch (e) {
